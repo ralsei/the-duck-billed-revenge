@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://5skba0gaxwrq"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_fnbej"]
+[ext_resource type="Texture2D" uid="uid://bj53ea6v1pwgk" path="res://assets/Pixel Adventure/Main Characters/Ninja Frog/Idle (32x32).png" id="1_jwgmg"]
+[ext_resource type="PackedScene" uid="uid://ci3ivx8h2fi4j" path="res://scenes/laser.tscn" id="2_owsfs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csc4s"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n83q"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nlbn"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0b2y"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cn8n"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vae3l"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbi2n"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h74om"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odjnp"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ngp3"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rdwr"]
+atlas = ExtResource("1_jwgmg")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vg8rp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csc4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n83q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nlbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0b2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cn8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vae3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbi2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h74om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odjnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ngp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rdwr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyjvp"]
+radius = 9.0
+height = 26.0
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_sprite", "_timer")]
+script = ExtResource("1_fnbej")
+_sprite = NodePath("AnimatedSprite2D")
+_laser_tscn = ExtResource("2_owsfs")
+_timer = NodePath("ShootTimer")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vg8rp")
+frame_progress = 0.9084
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_jyjvp")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

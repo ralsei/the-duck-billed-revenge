@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci3ivx8h2fi4j"]
+
+[ext_resource type="Script" path="res://scripts/laser.gd" id="1_ka8ks"]
+[ext_resource type="Texture2D" uid="uid://bqahj1805idf3" path="res://assets/Pixel Adventure/Other/Dust Particle.png" id="1_vxqw8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jbl7"]
+radius = 4.12311
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_ka8ks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vxqw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4jbl7")
