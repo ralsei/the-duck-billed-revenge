@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv5omeh1r3lvv"]
+
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_2br3h"]
+[ext_resource type="Texture2D" uid="uid://cf4b0y7yqwxhh" path="res://assets/Pixel Sword Pack/Katana.png" id="2_hv7xa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufjb3"]
+size = Vector2(24.875, 20)
+
+[node name="Weapon" type="Area2D" node_paths=PackedStringArray("_lifetime")]
+script = ExtResource("1_2br3h")
+_lifetime = NodePath("Lifetime")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12.5625, 0)
+shape = SubResource("RectangleShape2D_ufjb3")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(12, 0)
+rotation = 0.785398
+texture = ExtResource("2_hv7xa")
+flip_h = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

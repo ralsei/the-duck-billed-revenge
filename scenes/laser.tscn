@@ -1,16 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci3ivx8h2fi4j"]
 
 [ext_resource type="Script" path="res://scripts/laser.gd" id="1_ka8ks"]
-[ext_resource type="Texture2D" uid="uid://bqahj1805idf3" path="res://assets/Pixel Adventure/Other/Dust Particle.png" id="1_vxqw8"]
+[ext_resource type="Texture2D" uid="uid://cu5ncvukwnfgr" path="res://assets/Pixel Adventure/Enemies/Trunk/Bullet.png" id="2_myvtg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4jbl7"]
-radius = 4.12311
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smc28"]
+radius = 5.0
+height = 10.0
 
-[node name="Laser" type="Area2D"]
+[node name="Laser" type="Area2D" node_paths=PackedStringArray("_sprite") groups=["bullet"]]
 script = ExtResource("1_ka8ks")
+_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vxqw8")
+texture = ExtResource("2_myvtg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4jbl7")
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_smc28")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
