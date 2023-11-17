@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://x2u7nhrq1wyy"]
+
+[ext_resource type="Theme" uid="uid://bwbdk3kc6hg2v" path="res://scenes/end_card.tres" id="1_5ou2k"]
+[ext_resource type="Script" path="res://scripts/end_card.gd" id="2_nattg"]
+
+[node name="EndCard" type="Control"]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_5ou2k")
+script = ExtResource("2_nattg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_right = 204.0
+offset_bottom = 58.0
+theme = ExtResource("1_5ou2k")
+text = "You died!
+Press R to reset."
+horizontal_alignment = 1
+vertical_alignment = 1

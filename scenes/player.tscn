@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://qd182oygp4qe"]
+[gd_scene load_steps=41 format=3 uid="uid://qd182oygp4qe"]
 
 [ext_resource type="Texture2D" uid="uid://d3qxdt7kln4op" path="res://assets/Pixel Adventure/Main Characters/Virtual Guy/Idle (32x32).png" id="1_4ntan"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xqwnj"]
 [ext_resource type="PackedScene" uid="uid://bv5omeh1r3lvv" path="res://scenes/weapon.tscn" id="2_2nty3"]
+[ext_resource type="PackedScene" uid="uid://x2u7nhrq1wyy" path="res://scenes/end_card.tscn" id="3_l8pw8"]
 [ext_resource type="Texture2D" uid="uid://dfmiqvqke8wwc" path="res://assets/Pixel Adventure/Main Characters/Virtual Guy/Run (32x32).png" id="4_h5jq2"]
 [ext_resource type="Texture2D" uid="uid://b2t7tqpo7qutt" path="res://assets/Pixel Adventure/Main Characters/Virtual Guy/Hit (32x32).png" id="4_orvfh"]
 [ext_resource type="Texture2D" uid="uid://f46oh32es708" path="res://assets/Pixel Adventure/Main Characters/Virtual Guy/Jump (32x32).png" id="4_todp6"]
@@ -250,10 +251,11 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p16o2"]
 height = 26.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_sprite") groups=["character"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_sprite") groups=["character", "player"]]
 script = ExtResource("1_xqwnj")
 _weapon = ExtResource("2_2nty3")
 _sprite = NodePath("AnimatedSprite2D")
+_end_card = ExtResource("3_l8pw8")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -2,12 +2,17 @@ extends Area2D
 
 @export var _lifetime: Timer
 
-func _ready():
-	pass # Replace with function body.
+var _sprite_flip := Enums.SpriteFlip.RIGHT
+
+func set_direction(dir: Enums.SpriteFlip):
+	_sprite_flip = dir
+	if _sprite_flip == Enums.SpriteFlip.LEFT:
+		self.rotation_degrees = 180
+	elif _sprite_flip == Enums.SpriteFlip.RIGHT:
+		self.rotation_degrees = 0
 
 func _process(delta):
 	var t = _get_lifetime_pct()
-	print(t)
 	var rotate_by = lerp(-PI/4, PI/4, t)
 	self.rotate(rotate_by)
 

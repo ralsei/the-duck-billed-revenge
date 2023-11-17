@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bwbdk3kc6hg2v"]
+
+[ext_resource type="FontFile" uid="uid://ihs3ali15fxv" path="res://assets/Monogram/monogram.ttf" id="1_p6cme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5m8s"]
+bg_color = Color(0, 0, 0, 1)
+
+[resource]
+default_font = ExtResource("1_p6cme")
+default_font_size = 32
+Label/styles/normal = SubResource("StyleBoxFlat_c5m8s")

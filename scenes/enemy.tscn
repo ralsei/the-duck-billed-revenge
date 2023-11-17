@@ -225,11 +225,12 @@ animations = [{
 radius = 11.0
 height = 26.0
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_sprite", "_timer") groups=["character", "enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_sprite", "_timer", "_raycast") groups=["character", "enemy"]]
 script = ExtResource("1_fnbej")
 _sprite = NodePath("AnimatedSprite2D")
 _laser_tscn = ExtResource("2_owsfs")
 _timer = NodePath("ShootTimer")
+_raycast = NodePath("RayCast2D")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -245,6 +246,8 @@ shape = SubResource("CapsuleShape2D_jyjvp")
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cf4b0y7yqwxhh" path="res://assets/Pixel Sword Pack/Katana.png" id="2_hv7xa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufjb3"]
-size = Vector2(24.875, 20)
+size = Vector2(24.875, 10)
 
 [node name="Weapon" type="Area2D" node_paths=PackedStringArray("_lifetime")]
 script = ExtResource("1_2br3h")
 _lifetime = NodePath("Lifetime")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(12.5625, 0)
+position = Vector2(13.5625, 0)
 shape = SubResource("RectangleShape2D_ufjb3")
 
 [node name="Lifetime" type="Timer" parent="."]
